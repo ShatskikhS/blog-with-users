@@ -70,6 +70,10 @@ class Comment(db.Model, UserMixin):
     text = db.Column(db.Text, nullable=False)
 
 
+with app.app_context():
+    db.create_all()
+
+
 def admin_only(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
